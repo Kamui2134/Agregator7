@@ -1,0 +1,50 @@
+@import "./base.css";
+
+:root {
+    --color-white: #fff;
+    --color-green-1: #61892f;
+    --color-green-2: #86c232;
+    --color-black-1: #222629;
+    --color-gray-1: #6b6e70;
+}
+
+/* REUSED STYLES */
+
+/* HEADER */
+.header {
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+}
+.header__container {
+    width: min(1200px, 100%);
+    justify-content: space-between;
+}
+
+/* MAIN */
+.main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-black-1);
+    height: 1000px;
+}
+
+/* FOOTER */
+
+/* MEDIA */
+@media (max-width: 1200px) {
+
+}
+@media (max-width: 960px) {
+
+}
+@media (max-width: 720px) {
+
+}
+@media (max-width: 540px) {
+
+}
+@media (max-width: 420px) {
+
+}
