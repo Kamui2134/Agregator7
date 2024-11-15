@@ -13,7 +13,7 @@ let mouseCoords = {
 // Функция для обновления размеров
 function updateCanvasSize() {
 	canvas.height = document.body.offsetHeight
-	canvas.width = window.innerWidth
+	canvas.width = document.body.offsetWidth
 }
 
 // Обработчик события изменения окна
@@ -23,7 +23,7 @@ window.addEventListener('resize', () => {
 	clearTimeout(resizeTimeout)
 	resizeTimeout = setTimeout(() => {
 		updateCanvasSize()
-	}, 1) // Устанавливаем задержку в 100ms
+	}, 1)
 })
 
 // Наблюдаем за изменениями размера body

@@ -87,6 +87,12 @@
 .casino-link:active {
 	transform: scale(0.9);
 }
+.casino-link.casino-link--best {
+	background-color: var(--color-yellow-1);
+}
+.casino-link.casino-link--best:hover {
+	box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-yellow-1);
+}
 
 /* HEADER */
 .header {
@@ -151,6 +157,7 @@
 }
 .header__nav {
 	position: absolute;
+	visibility: hidden;
 }
 
 /* MAIN */
@@ -180,10 +187,11 @@
 	align-items: center;
 	margin-bottom: 40px;
 	z-index: 10;
+	padding: 0 20px;
 }
 .best-games__description {
 	width: 100%;
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 .best-games__site-name {
 	width: 100%;
@@ -218,6 +226,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
 	gap: 20px;
 }
 .best-games__game {
@@ -230,6 +239,26 @@
 	align-items: center;
 	gap: 24px;
 	border: 2px solid var(--color-gray-1);
+}
+.best-games__game.best-games__game--best {
+	overflow: hidden;
+	position: relative;
+	border: 4px solid var(--color-yellow-1);
+}
+.best-games__game.best-games__game--best::after {
+	display: block;
+	content: 'best offer';
+	position: absolute;
+	top: 20px;
+	left: -75px;
+	transform: rotate(-45deg);
+	background-color: var(--color-yellow-1);
+	padding: 15px 80px;
+	color: var(--color-black-2);
+	font-weight: var(--weight-bold);
+	box-shadow: 0px 0px 6px 2px var(--color-gray-2);
+	font-size: var(--fontSize-14);
+	text-transform: uppercase;
 }
 .best-games__game-logo {
 	width: 150px;
@@ -266,6 +295,7 @@
 	align-items: center;
 	z-index: 10;
 	margin-bottom: 80px;
+	padding: 0 20px;
 }
 .games__description {
 	width: 100%;
@@ -587,12 +617,158 @@
 
 /* MEDIA */
 @media (max-width: 1200px) {
+	/* REUSED STYLES */
+	/* HEADER */
+	/* MAIN */
+	/* MAIN -> BEST-GAMES */
+	/* MAIN -> GAMES */
+	/* MAIN -> FAST-PAYMENTS */
+	/* MAIN -> ABOUT-US */
+	/* MAIN -> OUR-ADVANTAGES */
+	/* MAIN -> FAQ */
+	/* FOOTER */
 }
 @media (max-width: 960px) {
+	/* REUSED STYLES */
+	/* HEADER */
+	/* MAIN */
+	/* MAIN -> BEST-GAMES */
+	.best-games__description {
+		width: 80%;
+	}
+	.best-games__games {
+		width: 80%;
+	}
+	.best-games__game {
+		width: calc((100% - 20px) / 2);
+	}
+	/* MAIN -> GAMES */
+	/* MAIN -> FAST-PAYMENTS */
+	/* MAIN -> ABOUT-US */
+	/* MAIN -> OUR-ADVANTAGES */
+	/* MAIN -> FAQ */
+	/* FOOTER */
 }
 @media (max-width: 720px) {
+	/* REUSED STYLES */
+	/* HEADER */
+	.header {
+		padding: 20px;
+	}
+	.header__logo {
+		width: 240px;
+	}
+	.header__button-container {
+		gap: 12px;
+	}
+	/* MAIN */
+	.main {
+		padding-top: 160px;
+	}
+	/* MAIN -> BEST-GAMES */
+	.best-games__description {
+		width: 100%;
+	}
+	.best-games__site-name {
+		font-size: var(--fontSize-16);
+		margin-bottom: 16px;
+	}
+	.best-games__title {
+		font-size: var(--fontSize-24);
+		margin-bottom: 16px;
+	}
+	.best-games__text {
+		font-size: var(--fontSize-14);
+		margin-bottom: 14px;
+	}
+	.best-games__disclaimer {
+	}
+	.best-games__games {
+		width: 100%;
+		column-gap: 10px;
+	}
+	.best-games__game {
+		width: calc((100% - 20px) / 2);
+	}
+	.best-games__game.best-games__game--best {
+		width: 100%;
+	}
+	/* MAIN -> GAMES */
+	/* MAIN -> FAST-PAYMENTS */
+	/* MAIN -> ABOUT-US */
+	/* MAIN -> OUR-ADVANTAGES */
+	/* MAIN -> FAQ */
+	.faq__question {
+		max-height: 56px;
+	}
+	.faq__question-title {
+		font-size: var(--fontSize-16);
+	}
+	.faq__question-text {
+		font-size: var(--fontSize-14);
+	}
+	/* FOOTER */
 }
 @media (max-width: 540px) {
+	/* REUSED STYLES */
+	/* HEADER */
+	.header__container {
+		align-items: center;
+		gap: 20px;
+	}
+	.header__special-buttons {
+		display: none;
+	}
+	.header__logo {
+		width: 200px;
+	}
+	/* MAIN */
+	/* MAIN -> BEST-GAMES */
+	/* MAIN -> GAMES */
+	/* MAIN -> FAST-PAYMENTS */
+	/* MAIN -> ABOUT-US */
+	/* MAIN -> OUR-ADVANTAGES */
+	/* MAIN -> FAQ */
+	.faq__title {
+		font-size: var(--fontSize-20);
+	}
+	.faq__questions {
+		gap: 10px;
+	}
+	.faq__question-body {
+		padding: 0 10px 0 10px;
+	}
+	/* FOOTER */
 }
 @media (max-width: 420px) {
+	/* REUSED STYLES */
+	/* HEADER */
+	.header__button-text {
+		display: none;
+	}
+	/* MAIN */
+	.main {
+		padding-top: 100px;
+	}
+	/* MAIN -> BEST-GAMES */
+	.best-games__site-name {
+		font-size: var(--fontSize-12);
+		margin-bottom: 12px;
+	}
+	.best-games__title {
+		font-size: var(--fontSize-20);
+		margin-bottom: 12px;
+	}
+	.best-games__text {
+		font-size: var(--fontSize-12);
+	}
+	.best-games__disclaimer {
+		font-size: var(--fontSize-14);
+	}
+	/* MAIN -> GAMES */
+	/* MAIN -> FAST-PAYMENTS */
+	/* MAIN -> ABOUT-US */
+	/* MAIN -> OUR-ADVANTAGES */
+	/* MAIN -> FAQ */
+	/* FOOTER */
 }
