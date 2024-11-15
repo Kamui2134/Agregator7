@@ -10,35 +10,35 @@ let mouseCoords = {
 	y: undefined,
 }
 
-// window.addEventListener("mousemove", (e) => {
+// Функция для обновления размеров
+function updateCanvasSize() {
+	canvas.height = document.body.offsetHeight
+	canvas.width = window.innerWidth
+}
 
-//   if (mouseCoords.x < e.x) {
-//     puntos.forEach(punto => {
-//       punto.x -= - 0.6
-//     });
-//   }
+// Обработчик события изменения окна
+let resizeTimeout
+window.addEventListener('resize', () => {
+	// Задержка, чтобы избежать мигания
+	clearTimeout(resizeTimeout)
+	resizeTimeout = setTimeout(() => {
+		updateCanvasSize()
+	}, 1) // Устанавливаем задержку в 100ms
+})
 
-//   if (mouseCoords.x > e.x) {
-//     puntos.forEach(punto => {
-//       punto.x += - 0.6
-//     });
-//   }
+// Наблюдаем за изменениями размера body
+const observer = new ResizeObserver(() => {
+	// Задержка перед обновлением
+	clearTimeout(resizeTimeout)
+	resizeTimeout = setTimeout(() => {
+		updateCanvasSize()
+	}, 1)
+})
 
-//   if (mouseCoords.y < e.y) {
-//     puntos.forEach(punto => {
-//       punto.y -= - 0.6
-//     });
-//   }
+observer.observe(document.body)
 
-//   if (mouseCoords.y > e.y) {
-//     puntos.forEach(punto => {
-//       punto.y += - 0.6
-//     });
-//   }
-
-//   mouseCoords.x = e.x;
-//   mouseCoords.y = e.y;
-// })
+// Инициализация начальных размеров
+updateCanvasSize()
 
 function Punto() {
 	this.x = Math.random() * canvas.width
@@ -87,4 +87,63 @@ function randomColor() {
 	if (random > 2) return 'rgb(206, 206, 206)'
 	if (random < 2 && random > 1) return 'gray'
 	if (random < 1) return '#7db424'
+}
+
+// FAQ
+
+const questions = document.querySelectorAll('.faq__question')
+const questionsBtns = document.querySelectorAll('.faq__question-btn')
+
+for (let i = 0; i < questions.length; i++) {
+	questions[i].style.maxHeight =
+		questions[i].querySelector('.faq__question-head').clientHeight + 40 + 'px'
+}
+window.addEventListener('resize', function () {
+	for (let i = 0; i < questions.length; i++) {
+		if (questionsBtns[i].style.transform != 'rotate(90deg)') {
+			questions[i].style.maxHeight =
+				questions[i].querySelector('.faq__question-head').clientHeight +
+				40 +
+				'px'
+		} else {
+			questions[i].style.maxHeight = questions[i].scrollHeight + 'px'
+		}
+	}
+})
+
+function questionToggle(index) {
+	const headHeight = questions[index].querySelector(
+		'.faq__question-head'
+	).clientHeight // Получаем высоту faq__question-head
+
+	if (questionsBtns[index].style.transform == 'rotate(90deg)') {
+		questionsBtns[index].style.transform = 'rotate(45deg)'
+		if (window.innerWidth <= 720) {
+			questions[index].style.maxHeight = headHeight + 40 + 'px'
+		} else {
+			questions[index].style.maxHeight = headHeight + 40 + 'px'
+		}
+	} else {
+		questionsBtns[index].style.transform = 'rotate(90deg)'
+		questions[index].style.maxHeight = questions[index].scrollHeight + 'px'
+	}
+}
+
+for (let i = 0; i < questionsBtns.length; i++) {
+	questionsBtns[i].addEventListener('click', () => {
+		questionToggle(i)
+	})
+}
+
+setTimeout(() => {
+	canvas.width = window.innerWidth
+	canvas.height = document.body.offsetHeight
+}, 200)
+
+// COPIYING BUTTON
+
+function copyPath() {
+	navigator.clipboard
+		.writeText(window.location.href)
+		.then(alert('copying completed'))
 }

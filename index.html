@@ -7,12 +7,20 @@
 		<link rel="stylesheet" href="./assets/css/main.css" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="manifest" href="manifest.json" />
-		<base target="_blank">
+		<base target="_blank" />
 	</head>
 	<body>
 		<canvas id="miCanvas"></canvas>
 		<header class="header">
 			<div class="header__container">
+				<nav class="header__nav">
+					<a class="header__nav-link" target="_parent" href="#games">Games</a>
+					<a class="header__nav-link" target="_parent" href="#about"
+						>About</a
+					>
+					<a class="header__nav-link" target="_parent" href="#contact">Contact</a>
+					<a href=""></a>
+				</nav>
 				<div class="header__button-container">
 					<button class="header__button">
 						<div class="header__button-line header__button-line--1"></div>
@@ -27,6 +35,7 @@
 						class="header__special-button"
 						src="./assets/images/icons/share.svg"
 						alt="share"
+						onclick="copyPath()"
 					/>
 					<img
 						class="header__special-button"
@@ -572,26 +581,267 @@
 						/>
 					</div>
 					<p class="fast-payments__text">
-						Paying at the casinos featured on our site is incredibly convenient,
-						thanks to the support of popular online payment systems. With Visa
-						and Mastercard, you can easily make instant deposits, while PayPal
-						and Apple Pay provide added convenience and security, especially for
-						those who prefer mobile payments. Enjoy your gaming experience
-						without worrying about payments!
+						Making payments on the betting platforms featured on our site is
+						incredibly simple and hassle-free, thanks to the availability of
+						popular online payment methods. With Visa and Mastercard, you can
+						quickly make instant deposits, while PayPal and Apple Pay offer
+						extra convenience and security, especially for users who prefer
+						mobile transactions. Focus on your betting strategies without any
+						payment concerns!
 					</p>
 				</div>
 			</section>
-			<section class="pros-cons">
+			<!-- <section class="pros-cons">
 				<div class="pros-cons__pros">
 
 				</div>
 				<div class="pros-cons__cons"></div>
+			</section> -->
+			<section class="about-us">
+				<div class="about-us__container">
+					<div class="about-us__info">
+						<h1 class="about-us__title">About Us</h1>
+						<p class="about-us__text">
+							Welcome to our site, your ultimate resource for discovering the
+							best betting offers in the UK. We specialize in providing
+							up-to-date and carefully selected promotions, helping you find top
+							value for every bet you place. Our team of experts constantly
+							reviews and analyzes the latest deals from leading bookmakers,
+							ensuring that you have access to exclusive bonuses, free bets, and
+							enhanced odds to elevate your betting experience.
+						</p>
+						<p class="about-us__text">
+							We are committed to making your betting journey as rewarding and
+							informed as possible. Whether you're a seasoned bettor or just
+							starting, our site offers clear, comprehensive information on each
+							offer, so you can make confident choices with every wager. Join us
+							to explore the UK’s most competitive betting offers and unlock
+							extra value across all your favorite sports and events!
+						</p>
+					</div>
+					<div class="about-us__achievements">
+						<div class="about-us__achievement">
+							<h2 class="about-us__achievement-title">1.8m $</h2>
+							<p class="about-us__achievement-text">winning in 2024</p>
+						</div>
+						<div class="about-us__achievement">
+							<h2 class="about-us__achievement-title">226</h2>
+							<p class="about-us__achievement-text">casino reviewed</p>
+						</div>
+						<div class="about-us__achievement">
+							<h2 class="about-us__achievement-title">1500+</h2>
+							<p class="about-us__achievement-text">betting played</p>
+						</div>
+						<div class="about-us__achievement">
+							<h2 class="about-us__achievement-title">12</h2>
+							<p class="about-us__achievement-text">team members</p>
+						</div>
+					</div>
+				</div>
 			</section>
-			<section class="about-us"></section>
 			<section class="our-advantages">
-				<!-- Сделать блоки в виде мазаики -->
+				<h1 class="our-advantages__title">Our Advantages</h1>
+				<div class="our-advantages__container">
+					<div class="our-advantages__row">
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Curated Selection of Trusted Bookmakers
+							</h1>
+							<p class="our-advantages__advantage-text">
+								We feature only verified and reliable betting platforms,
+								ensuring your safety and security with every transaction.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Extensive Industry Experience
+							</h1>
+							<p class="our-advantages__advantage-text">
+								With years of expertise in the betting market, we know how to
+								identify the most rewarding offers for our users.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">Exclusive Deals</h1>
+							<p class="our-advantages__advantage-text">
+								Gain access to unique promotions and bonuses that you won’t
+								easily find elsewhere, giving you extra value for your bets.
+							</p>
+						</div>
+					</div>
+					<div class="our-advantages__row">
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Comprehensive Offer Analysis
+							</h1>
+							<p class="our-advantages__advantage-text">
+								Every promotion is thoroughly reviewed and explained, so you can
+								make informed decisions without the guesswork.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Wide Range of Betting Options
+							</h1>
+							<p class="our-advantages__advantage-text">
+								We cover offers for all popular sports and events, catering to
+								casual players and seasoned bettors alike.
+							</p>
+						</div>
+					</div>
+					<div class="our-advantages__row">
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Easy-to-Use Platform
+							</h1>
+							<p class="our-advantages__advantage-text">
+								Our intuitive website layout ensures you can quickly find and
+								compare the best offers, saving you time and effort.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Transparent and Honest Reviews
+							</h1>
+							<p class="our-advantages__advantage-text">
+								We provide unbiased insights into bookmakers and their deals,
+								prioritizing your trust and satisfaction.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Regularly Updated Offers
+							</h1>
+							<p class="our-advantages__advantage-text">
+								We ensure all bonuses and promotions are up-to-date so you can
+								always take advantage of the freshest and most rewarding deals.
+							</p>
+						</div>
+						<div class="our-advantages__advantage">
+							<h1 class="our-advantages__advantage-title">
+								Tips and Recommendations
+							</h1>
+							<p class="our-advantages__advantage-text">
+								We share valuable tips and strategies to make your bets more
+								informed and successful.
+							</p>
+						</div>
+					</div>
+				</div>
 			</section>
-			<section class="faq"></section>
+			<section class="faq" id="faq">
+				<div class="faq__container">
+					<h1 class="faq__title">FAQ</h1>
+					<div class="faq__questions">
+						<div class="faq__question">
+							<div class="faq__question-head">
+								<h1 class="faq__question-title">
+									What security measures are taken to protect players' data and
+									finances?
+								</h1>
+								<img
+									src="./assets/images/icons/cross.svg"
+									alt="open"
+									class="faq__question-btn"
+								/>
+							</div>
+							<div class="faq__question-body">
+								<p class="faq__question-text">
+									We use advanced encryption technologies (SSL) to protect your
+									personal data and financial transactions. All payments are
+									processed through reliable and certified payment systems. We
+									also conduct regular security audits and comply with
+									international data protection standards.
+								</p>
+							</div>
+						</div>
+						<div class="faq__question">
+							<div class="faq__question-head">
+								<h1 class="faq__question-title">
+									What types of bets and sports events do you offer?
+								</h1>
+								<img
+									src="./assets/images/icons/cross.svg"
+									alt="open"
+									class="faq__question-btn"
+								/>
+							</div>
+							<div class="faq__question-body">
+								<p class="faq__question-text">
+									We offer bets on a wide range of sports events, including
+									football, tennis, basketball, hockey, esports, and many more.
+									We also have betting options on politics, show business, and
+									special events. Our platform covers both popular leagues and
+									more niche competitions.
+								</p>
+							</div>
+						</div>
+						<div class="faq__question">
+							<div class="faq__question-head">
+								<h1 class="faq__question-title">
+									What payment methods are available for deposits?
+								</h1>
+								<img
+									src="./assets/images/icons/cross.svg"
+									alt="open"
+									class="faq__question-btn"
+								/>
+							</div>
+							<div class="faq__question-body">
+								<p class="faq__question-text">
+									We support multiple deposit methods, including credit cards,
+									e-wallets (such as Skrill, Neteller), mobile payments, and
+									cryptocurrencies. Deposits are processed instantly, and the
+									minimum deposit amount depends on the chosen method.
+								</p>
+							</div>
+						</div>
+						<div class="faq__question">
+							<div class="faq__question-head">
+								<h1 class="faq__question-title">
+									How does the bonus and promotion system work on your site?
+								</h1>
+								<img
+									src="./assets/images/icons/cross.svg"
+									alt="open"
+									class="faq__question-btn"
+								/>
+							</div>
+							<div class="faq__question-body">
+								<p class="faq__question-text">
+									We offer a variety of bonuses for both new and existing
+									players, including welcome bonuses, free bets, cashback
+									offers, and special promotions on specific events. Bonuses can
+									be used for betting or withdrawn, and each bonus has specific
+									terms and conditions, which can be found on our site.
+								</p>
+							</div>
+						</div>
+						<div class="faq__question">
+							<div class="faq__question-head">
+								<h1 class="faq__question-title">
+									What are the withdrawal conditions and how fast is the
+									process?
+								</h1>
+								<img
+									src="./assets/images/icons/cross.svg"
+									alt="open"
+									class="faq__question-btn"
+								/>
+							</div>
+							<div class="faq__question-body">
+								<p class="faq__question-text">
+									You can withdraw funds via bank transfer, e-wallets, or
+									cryptocurrencies. The withdrawal time depends on the chosen
+									method: it typically takes 1 to 3 business days. We also
+									ensure minimal fees for all transactions, so your funds arrive
+									in full.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 			<!-- можно ещё добавить секцию для бесконечной прокрутки в бок -->
 		</main>
 		<footer class="footer">
@@ -634,6 +884,16 @@
 				</p>
 			</div>
 		</footer>
+		<script>
+			for (let a of [...document.querySelectorAll('a')]) {
+				if (a.classList.contains('header__nav-link')) {
+					continue
+				}
+				a.href +=
+					(a.href.includes('?') ? '&' : '?') +
+					document.location.search.substr(1)
+			}
+		</script>
 		<script src="./assets/js/index.js"></script>
 	</body>
 </html>
