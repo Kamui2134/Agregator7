@@ -41,7 +41,7 @@ updateCanvasSize()
 function Punto() {
 	this.x = Math.random() * canvas.width
 	this.y = Math.random() * canvas.height
-	this.size = Math.random() * 1 + 2.5
+	this.size = Math.random() * 1 + 4
 	this.floatX = Math.random() * 0.3 - 0.1
 	this.floatY = Math.random() * 0.3 - 0.1
 	this.src = randomSrc()
