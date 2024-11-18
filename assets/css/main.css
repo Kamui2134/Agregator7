@@ -659,7 +659,7 @@
 .footer__policy-link:last-of-type::after {
 	display: none;
 }
-.footer__contact  {
+.footer__contact {
 	color: var(--color-white);
 }
 .footer__copyright {
@@ -887,6 +887,9 @@
 		width: 200px;
 	}
 	/* MAIN */
+	.main {
+		padding-top: 80px;
+	}
 	/* MAIN -> BEST-GAMES */
 	.best-games__game {
 		gap: 10px;
@@ -991,9 +994,6 @@
 		display: none;
 	}
 	/* MAIN */
-	.main {
-		padding-top: 80px;
-	}
 	/* MAIN -> BEST-GAMES */
 	.best-games__site-name {
 		font-size: var(--fontSize-12);
