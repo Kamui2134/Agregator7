@@ -3,23 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>GG Casino</title>
+		<title>Top Bet World</title>
 		<link rel="stylesheet" href="./assets/css/main.css" />
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<link rel="manifest" href="manifest.json" />
 		<base target="_blank" />
 	</head>
 	<body>
-		<canvas id="miCanvas">
-		</canvas>
+		<canvas id="miCanvas"> </canvas>
 		<header class="header">
 			<div class="header__container">
 				<nav class="header__nav">
 					<a class="header__nav-link" target="_parent" href="#games">Games</a>
-					<a class="header__nav-link" target="_parent" href="#about"
-						>About</a
+					<a class="header__nav-link" target="_parent" href="#about">About</a>
+					<a class="header__nav-link" target="_parent" href="#contact"
+						>Contact</a
 					>
-					<a class="header__nav-link" target="_parent" href="#contact">Contact</a>
 					<a href=""></a>
 				</nav>
 				<div class="header__button-container">
@@ -38,18 +37,20 @@
 						alt="share"
 						onclick="copyPath()"
 					/>
-					<img
-						class="header__special-button"
-						src="./assets/images/icons/star.svg"
-						alt="best"
-					/>
+					<a target="_parent" href="#best">
+						<img
+							class="header__special-button"
+							src="./assets/images/icons/star.svg"
+							alt="best"
+						/>
+					</a>
 				</div>
 			</div>
 		</header>
 		<main class="main">
-			<section class="best-games" id="games">
+			<section class="best-games" id="best">
 				<div class="best-games__description">
-					<p class="best-games__site-name">ggcasino&trade;</p>
+					<p class="best-games__site-name">topbetworld&trade;</p>
 					<h1 class="best-games__title">Exclusive Offers and Deals</h1>
 					<p class="best-games__text">
 						Top Casinio offers a carefully selected range of the finest UK
@@ -298,7 +299,7 @@
 					</li>
 				</ul>
 			</section>
-			<section class="games">
+			<section class="games" id="games">
 				<div class="games__description">
 					<h1 class="games__title">Other Great Casinos</h1>
 				</div>
@@ -879,15 +880,17 @@
 					<a class="footer__policy-link" href="/terms.html">Terms Of Use</a>
 					<a class="footer__policy-link" href="/cookie.html">Cookie Policy</a>
 				</div>
-				<a class="footer__contact" href="mailto:boomcpiasia@gmail.com">Email:&nbsp;boomcpiasia@gmail.com</a>
+				<a class="footer__contact" href="mailto:boomcpiasia@gmail.com"
+					>Email:&nbsp;boomcpiasia@gmail.com</a
+				>
 				<p class="footer__copyright">
-					GG Casino &copy; 2024 | All rights reserved.
+					Top Bet World &copy; 2024 | All rights reserved.
 				</p>
 			</div>
 		</footer>
 		<script>
 			for (let a of [...document.querySelectorAll('a')]) {
-				if (a.classList.contains('header__nav-link')) {
+				if (a.target === '_parent') {
 					continue
 				}
 				a.href +=

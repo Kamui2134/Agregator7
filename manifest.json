@@ -1,7 +1,7 @@
 {
-	"name": "GG Casino",
-	"short_name": "GG Casino",
-	"description": "GG Casino is the best site for your gambling experience",
+	"name": "Top Bet World",
+	"short_name": "Top Bet World",
+	"description": "Top Bet World is the ultimate destination for an unparalleled gambling experience",
 	"start_url": "/",
 	"form_factor": ["small", "medium", "large"],
 	"display": "standalone",
