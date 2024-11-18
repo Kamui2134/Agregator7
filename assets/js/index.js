@@ -41,7 +41,7 @@ updateCanvasSize()
 function Punto() {
 	this.x = Math.random() * canvas.width
 	this.y = Math.random() * canvas.height
-	this.size = Math.random() * 1.5 + 1.5
+	this.size = Math.random() * 1 + 2.5
 	this.floatX = Math.random() * 0.3 - 0.1
 	this.floatY = Math.random() * 0.3 - 0.1
 	this.src = randomSrc()
@@ -103,7 +103,7 @@ function Punto() {
 }
 
 let puntos = []
-for (let i = 0; i < 90; i++) {
+for (let i = 0; i < 100; i++) {
 	puntos[i] = new Punto()
 }
 
@@ -120,9 +120,12 @@ function move() {
 move()
 
 function randomSrc() {
-	let random = Math.random()
-	if (random > 0.5) return './assets/images/icons/coin-silver.svg'
-	if (random < 0.5) return './assets/images/icons/coin-gold.svg'
+	let random = Math.random() * 5
+	if (random < 1) return './assets/images/icons/ball1.svg'
+	if (random > 1 && random < 2) return './assets/images/icons/ball2.svg'
+	if (random > 2 && random < 3) return './assets/images/icons/ball3.svg'
+	if (random > 3 && random < 4) return './assets/images/icons/ball4.svg'
+	if (random > 4 && random < 5) return './assets/images/icons/ball5.svg'
 }
 
 // FAQ
