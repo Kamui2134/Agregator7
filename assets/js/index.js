@@ -19,7 +19,6 @@ function updateCanvasSize() {
 // Обработчик события изменения окна
 let resizeTimeout
 window.addEventListener('resize', () => {
-	// Задержка, чтобы избежать мигания
 	clearTimeout(resizeTimeout)
 	resizeTimeout = setTimeout(() => {
 		updateCanvasSize()
@@ -28,7 +27,6 @@ window.addEventListener('resize', () => {
 
 // Наблюдаем за изменениями размера body
 const observer = new ResizeObserver(() => {
-	// Задержка перед обновлением
 	clearTimeout(resizeTimeout)
 	resizeTimeout = setTimeout(() => {
 		updateCanvasSize()
@@ -43,19 +41,41 @@ updateCanvasSize()
 function Punto() {
 	this.x = Math.random() * canvas.width
 	this.y = Math.random() * canvas.height
-	this.size = Math.random() * 3
+	this.size = Math.random() * 1.5 + 1.5
 	this.floatX = Math.random() * 0.3 - 0.1
 	this.floatY = Math.random() * 0.3 - 0.1
-	this.color = randomColor()
+	this.src = randomSrc()
+	this.img = new Image()
+	this.img.src = this.src
+	this.angle = Math.random() * Math.PI * 2 // Угол в радианах
+	this.rotationSpeed = (Math.random() - 0.5) * 0.05
+
+	this.imgLoaded = false // Флаг для проверки загрузки изображения
+	this.img.onload = () => {
+		this.imgLoaded = true // Установить флаг после загрузки
+	}
 
 	this.draw = function () {
-		context.beginPath()
-		context.fillStyle = this.color
-		context.arc(this.x, this.y, this.size, 0, 360)
-		context.fill()
+		if (this.imgLoaded) {
+			// Рисуем изображение с центровкой
+			context.drawImage(
+				this.img,
+				-this.size * 5, // Сместить, чтобы центр был в (0, 0)
+				-this.size * 5,
+				this.size * 10,
+				this.size * 10
+			)
+		} else {
+			// Опционально: нарисовать что-то другое, пока изображение не загрузится
+			context.beginPath()
+			context.fillStyle = 'gray'
+			context.arc(0, 0, this.size * 5, 0, Math.PI * 2)
+			context.fill()
+		}
 	}
 
 	this.update = function () {
+		// Обновление позиции
 		if (this.x > canvas.width) this.x = -10
 		if (this.x < -20) this.x = canvas.width
 		if (this.y > canvas.height) this.y = -10
@@ -63,12 +83,29 @@ function Punto() {
 
 		this.x += this.floatX
 		this.y += this.floatY
+		this.angle += this.rotationSpeed
+
+		// Сохраняем текущий контекст
+		context.save()
+
+		// Перемещаем центр координат в центр объекта
+		context.translate(this.x, this.y)
+
+		// Поворачиваем вокруг новой точки (центра)
+		context.rotate(this.angle)
+
+		// Рисуем объект
 		this.draw()
+
+		// Восстанавливаем контекст
+		context.restore()
 	}
 }
 
 let puntos = []
-for (let i = 0; i < 300; i++) puntos[i] = new Punto()
+for (let i = 0; i < 90; i++) {
+	puntos[i] = new Punto()
+}
 
 function move() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
@@ -82,11 +119,10 @@ function move() {
 
 move()
 
-function randomColor() {
-	let random = Math.random() * 3
-	if (random > 2) return 'rgb(206, 206, 206)'
-	if (random < 2 && random > 1) return 'gray'
-	if (random < 1) return '#7db424'
+function randomSrc() {
+	let random = Math.random()
+	if (random > 0.5) return './assets/images/icons/coin-silver.svg'
+	if (random < 0.5) return './assets/images/icons/coin-gold.svg'
 }
 
 // FAQ
@@ -147,3 +183,20 @@ function copyPath() {
 		.writeText(window.location.href)
 		.then(alert('copying completed'))
 }
+
+// NAV MENU
+
+const navBar = document.querySelector('.header__nav')
+const button = document.querySelector('.header__button')
+const navLinks = document.querySelectorAll('.header__nav-link')
+
+button.addEventListener('click', function () {
+	navBar.classList.toggle('active')
+	this.classList.toggle('active')
+})
+navLinks.forEach((navLink) => {
+	navLink.addEventListener('click', function () {
+		navBar.classList.toggle('active')
+		button.classList.toggle('active')
+	})
+})

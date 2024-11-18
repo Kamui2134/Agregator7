@@ -103,7 +103,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 10;
+	z-index: 12;
 }
 .header__container {
 	width: 100%;
@@ -116,6 +116,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: 20px;
+	z-index: 10;
 }
 .header__button {
 	display: flex;
@@ -127,6 +128,7 @@
 	width: 30px;
 	height: 4px;
 	background-color: var(--color-green-2);
+	transition: all 200ms ease;
 }
 .header__button-line--1 {
 }
@@ -138,6 +140,7 @@
 	text-transform: uppercase;
 	font-weight: var(--weight-semibold);
 	color: var(--color-white);
+	transition: all 200ms ease;
 }
 .header__logo {
 	width: 300px;
@@ -157,7 +160,46 @@
 }
 .header__nav {
 	position: absolute;
-	visibility: hidden;
+	background-color: var(--color-black-1);
+	border: 1px solid var(--color-gray-1);
+	transform-origin: top;
+	padding: 60px 20px 0 10px;
+	left: 30px;
+	top: 25px;
+	border-radius: 10px;
+	transition: all 200ms ease-in-out;
+	transform: scaleY(0);
+	z-index: 2;
+}
+.header__nav-link {
+	color: var(--color-white);
+	font-size: var(--fontSize-16);
+	font-weight: var(--weight-bold);
+	margin-bottom: 20px;
+	text-align: left;
+	text-transform: uppercase;
+}
+.header__button.active .header__button-line {
+	background-color: var(--color-white);
+}
+.header__button.active .header__button-line--1 {
+	transform-origin: left bottom;
+	transform: rotate(45deg);
+}
+.header__button.active .header__button-line--2 {
+	transform-origin: left center;
+	transform: scale(0);
+}
+.header__button.active .header__button-line--3 {
+	transform-origin: left top;
+	transform: rotate(-45deg);
+}
+.header__button.active ~ .header__button-text {
+	transform-origin: left center;
+	transform: scale(0);
+}
+.header__nav.active {
+	transform: scale(1);
 }
 
 /* MAIN */
@@ -275,6 +317,7 @@
 }
 .best-games__advantage {
 	display: flex;
+	align-items: flex-start;
 	gap: 10px;
 }
 .best-games__advantage-icon {
@@ -316,6 +359,7 @@
 	grid-template-columns: 1fr 1fr 1fr 2fr 0.7fr;
 	padding: 20px;
 	border-radius: 10px 10px 0 0;
+	gap: 10px;
 }
 .games__head-item {
 	width: 100%;
@@ -344,9 +388,11 @@
 	justify-content: center;
 }
 .games__game-img {
-	width: 200px;
+	height: 150px;
+	width: 100%;
 	padding: 10px;
 	border-radius: 10px;
+	object-fit: contain;
 }
 .games__game-bonus {
 	text-align: center;
@@ -380,7 +426,7 @@
 /* MAIN -> FAST-PAYMENTS */
 .fast-payments {
 	width: 100%;
-	padding: 40px;
+	padding: 40px 20px;
 	background-color: var(--color-gray-2);
 	z-index: 10;
 	display: flex;
@@ -596,6 +642,7 @@
 	gap: 20px;
 }
 .footer__policy-link {
+	text-wrap: nowrap;
 	color: var(--color-gray-1);
 	position: relative;
 }
@@ -610,6 +657,9 @@
 }
 .footer__policy-link:last-of-type::after {
 	display: none;
+}
+.footer__contact  {
+	color: var(--color-white);
 }
 .footer__copyright {
 	color: var(--color-white);
@@ -643,9 +693,64 @@
 		width: calc((100% - 20px) / 2);
 	}
 	/* MAIN -> GAMES */
+	.games__description {
+		width: 80%;
+	}
+	.games__head {
+		display: none;
+	}
+	.games__games {
+		width: 80%;
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.games__game {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-bottom: 0px solid transparent;
+		border-radius: 10px;
+		padding: 20px;
+		gap: 20px;
+	}
+	.games__game-column {
+		align-items: center;
+	}
+	.games__game-img {
+		width: 200px;
+		height: 120px;
+	}
+	.games__game-title {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+	.games__game:last-of-type {
+		border-radius: 10px;
+	}
+	.games__game-column:nth-child(3) {
+		order: -1;
+	}
+	.games__game-column:nth-child(1) {
+		order: -2;
+	}
 	/* MAIN -> FAST-PAYMENTS */
 	/* MAIN -> ABOUT-US */
 	/* MAIN -> OUR-ADVANTAGES */
+	.our-advantages__container {
+		gap: 10px;
+	}
+	.our-advantages__row {
+		gap: 10px;
+	}
+	.our-advantages__advantage {
+		padding: 15px;
+	}
+	.our-advantages__row:nth-of-type(3) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
 	/* MAIN -> FAQ */
 	/* FOOTER */
 }
@@ -660,6 +765,10 @@
 	}
 	.header__button-container {
 		gap: 12px;
+	}
+	.header__nav {
+		top: 10px;
+		left: 10px;
 	}
 	/* MAIN */
 	.main {
@@ -685,18 +794,66 @@
 	}
 	.best-games__games {
 		width: 100%;
-		column-gap: 10px;
+		gap: 10px;
 	}
 	.best-games__game {
-		width: calc((100% - 20px) / 2);
+		width: calc((100% - 10px) / 2);
 	}
 	.best-games__game.best-games__game--best {
 		width: 100%;
 	}
 	/* MAIN -> GAMES */
+	.games__description {
+		width: 100%;
+		margin-bottom: 16px;
+	}
+	.games__title {
+		font-size: var(--fontSize-24);
+	}
+	.games__games {
+		width: 100%;
+	}
 	/* MAIN -> FAST-PAYMENTS */
+	.fast-payments__title {
+		font-size: var(--fontSize-24);
+	}
+	.fast-payments__payment {
+		height: 70px;
+	}
+	.fast-payments__text {
+		font-size: var(--fontSize-14);
+	}
 	/* MAIN -> ABOUT-US */
+	.about-us__container {
+		flex-direction: column;
+		gap: 0px;
+	}
+	.about-us__title {
+		font-size: var(--fontSize-24);
+		margin-bottom: 14px;
+	}
+	.about-us__text {
+		font-size: var(--fontSize-14);
+		margin-bottom: 14px;
+	}
+	.about-us__achievement-text {
+		font-size: var(--fontSize-14);
+	}
 	/* MAIN -> OUR-ADVANTAGES */
+	.our-advantages__title {
+		font-size: var(--fontSize-24);
+		margin-bottom: 14px;
+	}
+	.our-advantages__advantage-title {
+		font-size: var(--fontSize-16);
+		margin-bottom: 14px;
+	}
+	.our-advantages__advantage-text {
+		font-size: var(--fontSize-14);
+	}
+	.our-advantages__advantage {
+		padding: 12px;
+	}
 	/* MAIN -> FAQ */
 	.faq__question {
 		max-height: 56px;
@@ -711,6 +868,12 @@
 }
 @media (max-width: 540px) {
 	/* REUSED STYLES */
+	.stars__star {
+		width: 20px;
+	}
+	.casino-link {
+		font-size: var(--fontSize-14);
+	}
 	/* HEADER */
 	.header__container {
 		align-items: center;
@@ -724,11 +887,70 @@
 	}
 	/* MAIN */
 	/* MAIN -> BEST-GAMES */
+	.best-games__game {
+		gap: 10px;
+		padding: 10px;
+	}
+	.best-games__game:not(.best-games__game--best) .best-games__game-logo {
+		width: 80%;
+	}
+	.best-games__advantages {
+		gap: 10px;
+	}
+	.best-games__advantage-text {
+		font-size: var(--fontSize-12);
+	}
 	/* MAIN -> GAMES */
+	.games__games {
+		gap: 10px;
+	}
+	.games__game {
+		padding: 10px;
+		gap: 10px;
+	}
+	.games__game-rating-text {
+		font-size: var(--fontSize-16);
+		font-weight: var(--weight-black);
+	}
+	.games__game-main-bonus {
+		font-size: var(--fontSize-16);
+	}
+	.games__game-bonus {
+		font-size: var(--fontSize-14);
+	}
+	.games__game-title {
+		font-size: var(--fontSize-16);
+	}
+	.games__game-text {
+		font-size: var(--fontSize-12);
+	}
 	/* MAIN -> FAST-PAYMENTS */
+	.fast-payments__container {
+		gap: 24px;
+	}
+	.fast-payments__payment {
+		height: 50px;
+	}
 	/* MAIN -> ABOUT-US */
 	/* MAIN -> OUR-ADVANTAGES */
+	.our-advantages__row:nth-of-type(1) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.our-advantages__row:nth-of-type(1) .our-advantages__advantage {
+		width: calc((100% - 10px) / 2);
+	}
+	.our-advantages__advantage-title {
+		font-size: var(--fontSize-14);
+		margin-bottom: 12px;
+	}
+	.our-advantages__advantage-text {
+		font-size: var(--fontSize-12);
+	}
 	/* MAIN -> FAQ */
+	.faq__container {
+		gap: 10px;
+	}
 	.faq__title {
 		font-size: var(--fontSize-20);
 	}
@@ -739,16 +961,37 @@
 		padding: 0 10px 0 10px;
 	}
 	/* FOOTER */
+	.footer__company {
+		height: 20px;
+	}
+	.footer__policy-link {
+		font-size: var(--fontSize-14);
+	}
+	.footer__contact {
+		font-size: var(--fontSize-14);
+	}
+	.footer__copyright {
+		font-size: var(--fontSize-14);
+	}
 }
 @media (max-width: 420px) {
 	/* REUSED STYLES */
+	.stars {
+		gap: 2px;
+	}
+	.stars__star {
+		width: 18px;
+	}
+	.casino-link {
+		padding: 10px;
+	}
 	/* HEADER */
 	.header__button-text {
 		display: none;
 	}
 	/* MAIN */
 	.main {
-		padding-top: 100px;
+		padding-top: 80px;
 	}
 	/* MAIN -> BEST-GAMES */
 	.best-games__site-name {
@@ -765,10 +1008,43 @@
 	.best-games__disclaimer {
 		font-size: var(--fontSize-14);
 	}
+	.best-games__game:not(.best-games__game--best) .best-games__game-logo {
+		width: 100%;
+		height: 80px;
+	}
+	.best-games__advantage:last-of-type {
+		display: none;
+	}
+	.best-games__advantage {
+		gap: 5px;
+	}
+	.best-games__advantage-icon {
+		width: 15px;
+	}
+	.best-games__game:not(.best-games__game--best) .best-games__advantage-text {
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		text-wrap: nowrap;
+	}
 	/* MAIN -> GAMES */
 	/* MAIN -> FAST-PAYMENTS */
 	/* MAIN -> ABOUT-US */
 	/* MAIN -> OUR-ADVANTAGES */
 	/* MAIN -> FAQ */
 	/* FOOTER */
+	.footer__container {
+		gap: 15px;
+	}
+	.footer__companies {
+		gap: 10px;
+	}
+	.footer__company {
+		height: 16px;
+	}
+}
+@media (max-width: 370px) {
+	.header__logo {
+		width: 160px;
+	}
 }
